@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PULSE90 — Match Highlight Reels & Flow Motion</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20100%20100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       FIXED BACKGROUND VIDEO STAGE (Plays flow videos as you scroll)
+       ========================================================================= -->
+  <div class="background-video-stage">
+    <video id="bg-video-primary" class="bg-video active" autoplay muted loop playsinline preload="auto"></video>
+    <video id="bg-video-secondary" class="bg-video" muted loop playsinline preload="auto"></video>
+    <div class="cinematic-vignette"></div>
+  </div>
+
+  <!-- =========================================================================
+       CINEMATIC HEADER (PULSE90 + Account & Audio Actions)
+       ========================================================================= -->
+  <header class="site-header">
+    <a href="#scene-0" class="header-brand">
+      <div class="brand-dot"></div>
+      <span class="brand-title">PULSE90</span>
+    </a>
+
+    <div class="header-actions">
+      <a href="#workflow" class="hdr-btn" style="color:var(--floodlight);">⚡ Extract</a>
+      <button id="open-records-btn" class="hdr-btn">📜 Records</button>
+      <button id="open-auth-btn" class="hdr-btn hdr-btn-primary">🔐 Sign In</button>
+      <span id="user-status-pill" class="hdr-btn" style="display:none; cursor:default; border-color:var(--floodlight);">
+        👤 <b id="current-username-display">sankhadip</b>
+      </span>
+      <button id="logout-hdr-btn" class="hdr-btn" style="display:none; color:var(--crowd); border-color:rgba(232,67,43,0.4);">
+        Log Out
+      </button>
+      <button id="audio-toggle-btn" class="hdr-btn" title="Toggle Stadium Crowd Sound">
+        <span id="audio-icon">🔇</span>
+        <span id="audio-label">UNMUTE ROAR</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Vertical Scene Scrubber (Right Side) -->
+  <nav class="scene-scrubber">
+    <a href="#scene-0" class="scrub-item active" data-index="0">
+      <span class="scrub-label">01 / THE CROWD</span>
+      <div class="scrub-dot"></div>
+    </a>
+    <a href="#scene-1" class="scrub-item" data-index="1">
+      <span class="scrub-label">02 / AUDIO SCAN</span>
+      <div class="scrub-dot"></div>
+    </a>
+    <a href="#scene-2" class="scrub-item" data-index="2">
+      <span class="scrub-label">03 / RMS ENERGY</span>
+      <div class="scrub-dot"></div>
+    </a>
+    <a href="#scene-3" class="scrub-item" data-index="3">
+      <span class="scrub-label">04 / Z-SCORE</span>
+      <div class="scrub-dot"></div>
+    </a>
+    <a href="#scene-4" class="scrub-item" data-index="4">
+      <span class="scrub-label">05 / REEL CUT</span>
+      <div class="scrub-dot"></div>
+    </a>
+    <a href="#workflow" class="scrub-item" data-index="5">
+      <span class="scrub-label" style="color:var(--floodlight);">06 / EXTRACT</span>
+      <div class="scrub-dot" style="border-color:var(--floodlight);"></div>
+    </a>
+  </nav>
+
+  <!-- Bottom Scroll Timeline -->
+  <div class="bottom-timeline">
+    <div id="timeline-progress" class="timeline-progress"></div>
+  </div>
+
+  <!-- =========================================================================
+       SCROLL SECTIONS (Explaining How The Website Works)
+       ========================================================================= -->
+  <main class="scroll-container">
+
+    <!-- SCENE 1: THE ARENA -->
+    <section id="scene-0" class="scroll-section active" data-index="0">
+      <div class="section-content">
+        <div class="scene-pill">✦ PULSE90 &bull; ACOUSTIC ARCHITECTURE</div>
+        <h1 class="scene-title">THE CROWD KNOWS <span class="highlight">BEFORE YOU DO</span></h1>
+        <p class="scene-quote">
+          PULSE90 was built on a fundamental truth: The stadium crowd anticipates a goal before any camera or computer vision model can. We tap directly into the roar of 80,000 supporters to isolate the moments that mattered.
+        </p>
+        <div class="scene-indicator">
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <span>Scroll to Discover How It Works</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 2: CONTINUOUS AUDIO EXTRACTION -->
+    <section id="scene-1" class="scroll-section" data-index="1">
+      <div class="section-content">
+        <div class="scene-pill">✦ STEP 01 &bull; SOUND EXTRACTION</div>
+        <h2 class="scene-title">CONTINUOUS <span class="highlight">AUDIO SCAN</span></h2>
+        <p class="scene-quote">
+          When you upload a broadcast match, the engine strips the video track and extracts a high-fidelity 44.1kHz mono audio stream. Scanning the match acoustically is 100× faster than sluggish frame-by-frame visual analysis.
+        </p>
+        <div class="scene-indicator">
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <span>Scroll to Next Step</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 3: RMS ENERGY TRACKING -->
+    <section id="scene-2" class="scroll-section" data-index="2">
+      <div class="section-content">
+        <div class="scene-pill">✦ STEP 02 &bull; DECIBEL CURVES</div>
+        <h2 class="scene-title">RMS ENERGY <span class="highlight">SPECTROGRAM</span></h2>
+        <p class="scene-quote">
+          Powered by Librosa signal processing, we compute rolling Root Mean Square (RMS) energy windows across 90 minutes. Normal gameplay hum is smoothed out, while crowd surges spike dramatically.
+        </p>
+        <div class="scene-indicator">
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <span>Scroll to Next Step</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 4: Z-SCORE PEAK DETECTION -->
+    <section id="scene-3" class="scroll-section" data-index="3">
+      <div class="section-content">
+        <div class="scene-pill">✦ STEP 03 &bull; STATISTICAL FILTERING</div>
+        <h2 class="scene-title">Z-SCORE <span class="highlight">PEAK DETECTION</span></h2>
+        <p class="scene-quote">
+          Scipy signal algorithms apply adaptive z-score normalization. Commentary voices and whistle sounds are filtered out, isolating the exact timestamps where stadium decibels surge 2× to 4× louder than baseline.
+        </p>
+        <div class="scene-indicator">
+          <div class="scroll-mouse">
+            <div class="scroll-wheel"></div>
+          </div>
+          <span>Scroll to Next Step</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 5: SURGICAL REEL CUTTING -->
+    <section id="scene-4" class="scroll-section" data-index="4">
+      <div class="section-content">
+        <div class="scene-pill">✦ STEP 04 &bull; FFmpeg PRECISION</div>
+        <h2 class="scene-title">SURGICAL <span class="highlight">REEL CUTTING</span></h2>
+        <p class="scene-quote">
+          FFmpeg buffers 8 seconds of pre-strike buildup and 12 seconds of celebration euphoria around every peak. Clips are sliced with zero re-encoding loss and assembled into your personalized reel in seconds.
+        </p>
+        <div class="scene-indicator">
+          <a href="#workflow" class="scene-pill" style="margin-top:20px; text-decoration:none; display:inline-flex; border-color:var(--floodlight); color:var(--floodlight);">
+            ⬇ Try The Highlight Extractor Below
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCENE 6: THE HIGHLIGHT REEL EXTRACTION WORKFLOW (From Project High)
+         ======================================================================= -->
+    <section id="workflow" class="workflow-section" data-index="5">
+      <div class="workflow-card">
+        
+        <div class="workflow-header">
+          <div class="scene-pill">⚡ PULSE90 HIGHLIGHT ENGINE</div>
+          <h2 class="scene-title" style="font-size:clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 8px;">
+            EXTRACT MATCH <span class="highlight">HIGHLIGHTS</span>
+          </h2>
+          <p style="color:var(--chalk-dim); font-size: 0.95rem;">
+            Upload your match video below to detect crowd roar and generate automatic highlight clips.
+          </p>
+          <div id="workflow-user-tag" style="margin-top: 10px; font-size: 0.88rem; color: var(--chalk-dim);"></div>
+        </div>
+
+        <!-- STEP 01: Drop match video -->
+        <div class="step-box">
+          <div class="step-label">STEP 01</div>
+          <div class="step-title">Drop your match video</div>
+          
+          <div id="match-drop-zone" class="drop-zone">
+            <div style="font-size: 2.4rem; margin-bottom: 8px;">📹</div>
+            <div style="font-weight: 700; font-size: 1.05rem;">Click to browse or drop your match video file</div>
+            <div style="font-size: 0.8rem; color: var(--chalk-muted); margin-top: 6px;">
+              Accepted formats: MP4, MOV, MKV, AVI (Up to 200MB)
+            </div>
+            <input type="file" id="match-file-input" accept="video/mp4,video/quicktime,video/x-matroska,video/x-msvideo" style="display: none;">
+          </div>
+          <div id="selected-file-name" style="margin-top: 10px; font-size: 0.88rem; color: var(--floodlight); font-weight: 600;"></div>
+        </div>
+
+        <!-- STEP 02: How should we pick highlights? -->
+        <div class="step-box">
+          <div class="step-label">STEP 02</div>
+          <div class="step-title">Configure highlight sensitivity</div>
+          
+          <div style="font-size: 0.85rem; color: var(--chalk-dim); margin-bottom: 8px;">How loud does a moment need to be?</div>
+          <div class="preset-grid">
+            <button class="preset-btn" data-sens="2.3">🥅 Only big moments</button>
+            <button class="preset-btn active" data-sens="1.5">⚖️ Balanced (recommended)</button>
+            <button class="preset-btn" data-sens="0.9">📣 Catch everything loud</button>
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--chalk-dim); margin: 16px 0 8px;">Highlight clip length:</div>
+          <div class="preset-grid">
+            <button class="preset-btn" data-length="5,8">⚡ Short &amp; punchy</button>
+            <button class="preset-btn active" data-length="8,12">🎬 Standard highlight</button>
+            <button class="preset-btn" data-length="12,20">🍿 Extended replay</button>
+          </div>
+
+          <div class="range-grid" style="margin-top: 18px;">
+            <div class="range-wrap">
+              <label>🏆 Max highlights: <b id="max-clips-val">10</b></label>
+              <input type="range" id="max-clips-slider" min="1" max="25" value="10">
+            </div>
+            <div class="range-wrap">
+              <label>⏱️ Min gap between peaks: <b id="min-gap-val">20s</b></label>
+              <input type="range" id="min-gap-slider" min="5" max="60" value="20">
+            </div>
+          </div>
+
+          <!-- Commentary AI Model Mode Selection -->
+          <div class="commentary-ai-card">
+            <div class="commentary-ai-header">
+              <div style="font-weight:700; color:var(--floodlight); font-size: 0.95rem; display:flex; align-items:center; gap:8px;">
+                <span>🎙️ Commentary AI Excitement Model</span>
+                <span class="ai-chip">PYTORCH + WHISPER NLP</span>
+              </div>
+              <label class="switch-wrap" title="Toggle Commentary AI Analysis">
+                <input type="checkbox" id="commentary-ai-toggle" checked>
+                <span class="slider-switch"></span>
+              </label>
+            </div>
+            <div style="font-size: 0.82rem; color: var(--chalk-dim); margin-bottom: 10px; line-height:1.4;">
+              Detects commentator vocal pitch acceleration ($F_0$), vocal strain, and speech keywords ("GOAL!", "What a save!") even when the crowd is silent (e.g. away goals, shock saves, and VAR controversy).
+            </div>
+            <div class="preset-grid" id="commentary-mode-grid">
+              <button type="button" class="preset-btn comm-mode-btn" data-comm-mode="commentary">🎙️ Commentary Priority</button>
+              <button type="button" class="preset-btn comm-mode-btn active" data-comm-mode="hybrid">⚖️ Hybrid (Voice + Roar)</button>
+              <button type="button" class="preset-btn comm-mode-btn" data-comm-mode="crowd">🏟️ Crowd Roar Only</button>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:0.78rem; color:#55d6be; background:rgba(85,214,190,0.08); border:1px solid rgba(85,214,190,0.25); border-radius:8px; padding:7px 12px;">
+              <span>🚫 <b>AI Replay Filter Active</b>: Automatically discards broadcast slow-motion replays (&Delta;t 15–90s &amp; retrospective language) so only original live moments are cut.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 03: Run pipeline -->
+        <div class="step-box" style="border-color: rgba(255, 201, 60, 0.4);">
+          <div class="step-label">STEP 03</div>
+          <div class="step-title">Execute detection &amp; slice clips</div>
+
+          <button id="run-extract-btn" class="btn-extract-run" disabled>
+            🚨 Find the highlights!
+          </button>
+        </div>
+
+        <!-- Status Box -->
+        <div id="extract-status-box" style="display: none; margin-top: 18px;"></div>
+
+        <!-- Extracted Results Area -->
+        <div id="extract-results-area" style="display: none;"></div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       DEDICATED CINEMA AUTH MODAL (High-End Sign In / Sign Up)
+       ========================================================================= -->
+  <div id="auth-modal" class="auth-modal-overlay">
+    <div class="auth-modal-card">
+      <button id="close-auth-modal-btn" class="auth-modal-close">&times;</button>
+      
+      <div class="auth-modal-header">
+        <div class="auth-brand-badge">
+          <div class="brand-dot"></div>
+          <span>PULSE90</span>
+        </div>
+        <h2 id="auth-modal-title" class="auth-modal-title">ACCESS YOUR REELS</h2>
+        <p id="auth-modal-subtitle" class="auth-modal-subtitle">
+          Sign in to save and access your match highlight extractions across sessions.
+        </p>
+      </div>
+
+      <!-- Segmented Switcher -->
+      <div class="auth-segmented-switch">
+        <button id="auth-switch-signin" class="auth-segment-btn active" type="button">Sign In</button>
+        <button id="auth-switch-signup" class="auth-segment-btn" type="button">Create Account</button>
+      </div>
+
+      <!-- Quick User Fill Chip -->
+      <div id="quick-user-box" class="quick-user-box">
+        <span>Detected local profile: <b>sankhadip</b></span>
+        <button type="button" id="quick-fill-btn" class="quick-user-chip">Quick Fill</button>
+      </div>
+
+      <!-- Sign In Form -->
+      <form id="signin-form">
+        <div class="input-group-wrapper">
+          <div class="input-label-row">
+            <label class="input-label" for="signin-username">USERNAME</label>
+          </div>
+          <div class="input-container">
+            <span class="input-icon-left">👤</span>
+            <input type="text" id="signin-username" class="auth-input" placeholder="Enter your username" required autocomplete="username">
+          </div>
+        </div>
+
+        <div class="input-group-wrapper">
+          <div class="input-label-row">
+            <label class="input-label" for="signin-password">PASSWORD</label>
+          </div>
+          <div class="input-container">
+            <span class="input-icon-left">🔒</span>
+            <input type="password" id="signin-password" class="auth-input" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" class="toggle-password-btn" data-target="signin-password" title="Show/Hide Password">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" id="signin-submit-btn" class="btn-extract-run" style="font-size:1.15rem; padding:13px; margin-top:10px;">
+          Sign In to PULSE90 ▸
+        </button>
+      </form>
+
+      <!-- Sign Up Form -->
+      <form id="signup-form" style="display: none;">
+        <div class="input-group-wrapper">
+          <div class="input-label-row">
+            <label class="input-label" for="signup-username">CHOOSE USERNAME</label>
+          </div>
+          <div class="input-container">
+            <span class="input-icon-left">👤</span>
+            <input type="text" id="signup-username" class="auth-input" placeholder="3–24 characters" required minlength="3" autocomplete="username">
+          </div>
+        </div>
+
+        <div class="input-group-wrapper">
+          <div class="input-label-row">
+            <label class="input-label" for="signup-password">CHOOSE PASSWORD</label>
+          </div>
+          <div class="input-container">
+            <span class="input-icon-left">🔒</span>
+            <input type="password" id="signup-password" class="auth-input" placeholder="At least 8 characters" required minlength="8" autocomplete="new-password">
+            <button type="button" class="toggle-password-btn" data-target="signup-password" title="Show/Hide Password">👁️</button>
+          </div>
+        </div>
+
+        <div class="input-group-wrapper">
+          <div class="input-label-row">
+            <label class="input-label" for="signup-confirm">CONFIRM PASSWORD</label>
+          </div>
+          <div class="input-container">
+            <span class="input-icon-left">🔒</span>
+            <input type="password" id="signup-confirm" class="auth-input" placeholder="Repeat your password" required minlength="8" autocomplete="new-password">
+            <button type="button" class="toggle-password-btn" data-target="signup-confirm" title="Show/Hide Password">👁️</button>
+          </div>
+        </div>
+
+        <button type="submit" id="signup-submit-btn" class="btn-extract-run" style="font-size:1.15rem; padding:13px; margin-top:10px;">
+          Create Account ▸
+        </button>
+      </form>
+
+      <div id="auth-status-msg" class="auth-status-msg"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       DEDICATED SLIDE-OVER DRAWER: HIGHLIGHT RECORDS (History View)
+       ========================================================================= -->
+  <div id="records-drawer" class="drawer-overlay">
+    <div class="drawer-panel">
+      <div class="drawer-top">
+        <div class="drawer-title">HIGHLIGHT RECORDS</div>
+        <button id="close-records-drawer-btn" class="drawer-close-btn">&times;</button>
+      </div>
+
+      <div id="records-list">
+        <!-- Dynamically populated from /api/history -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/motion.js"></script>
+  <script src="/js/extractor-ui.js"></script>
+  <script src="/js/account-records.js"></script>
+
+</body>
+</html>
